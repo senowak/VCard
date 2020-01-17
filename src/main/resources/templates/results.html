@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+>
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>Searched: </title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th> Stopień</th>
+        <th> Imię i nazwisko</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="result : ${resultsList}">
+        <td><span th:text="${result.title}"> Stopień </span></td>
+        <td><span th:text="${result.fullName}"> Imie i nazwisko </span></td>
+        <td>
+            <form th:action="@{'/download/{fullName}'(fullName=${result.fullName})}">
+                <button type="submit"><b>Wygeneruj VCard</b></button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
